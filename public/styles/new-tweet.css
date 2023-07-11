@@ -1,0 +1,39 @@
+.new-tweet {
+  margin-top: 30px;
+}
+.new-tweet textarea {
+  width: 100%;
+  background: transparent;
+  color: #000000;
+  font-weight: bold;
+  outline: none;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 4px solid black;
+  margin-bottom: 10px;
+}
+
+.new-tweet #tweetButton {
+  background-color: #5173e2;
+  font-size: 22px;
+  font-family: "Bungee", sans-serif;
+  color: white;
+}
+.new-tweet #tweetButton:hover {
+  cursor: pointer;
+}
+.new-tweet .counter {
+  font-weight: bold;
+  font-family: "Bungee", sans-serif;
+}
+#compose {
+  margin-bottom: 0;
+
+}
+.arrowsdown {
+  text-align: center;
+}
+.new-tweet .counter-overlimit {
+  color: red;
+}
