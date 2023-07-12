@@ -4,6 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//escape method used because it's easier to read for me
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
  $(document).ready(function() {
 
   const renderTweets = function(tweets) {
@@ -19,7 +26,10 @@
         url: "/tweets",
         method: "GET"
       })
+
       .done((data) => {
+        $('#tweets-container').empty();
+
         renderTweets(data);
       })
       .fail((err) => {
@@ -28,9 +38,10 @@
     };
       fetchTweets();
   
-    //new tweets every 2 seconds
-    setInterval(fetchTweets, 2000);
+    //new tweets every 3 seconds
+    setInterval(fetchTweets, 3000);
   };
+
 
 const createTweetElement = function(tweet) {
 
@@ -48,6 +59,7 @@ const createTweetElement = function(tweet) {
   //text area where tweet goes
 
   const $content = $("<div>").addClass("content").text(tweet.content.text).appendTo($tweet);
+
 
   //footer where the icons go
   $("<hr>").appendTo($content);
