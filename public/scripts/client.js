@@ -28,7 +28,7 @@ const escape = function (str) {
       })
 
       .done((data) => {
-        $('#tweets-container').empty();
+        $('#tweets-container').empty(); //clears so old data is not reposted repeatedly
 
         renderTweets(data);
       })
@@ -75,39 +75,42 @@ const createTweetElement = function(tweet) {
   };
 
 
+
 // Event listener for the submit event
 $('#tweet-form').submit(function(event) {
-  // Prevent the default behavior of form submission (page refresh)
   event.preventDefault();
 
-  // Get the tweet text from the form
-  const tweetText = $('#tweet-text').val();
+  const numbChar = $(".new-tweet").find("textarea").val().length;
 
-  // Check if the tweet is empty or >140
-  if (tweetText.trim() === '') {
-    alert('Please enter a tweet.');
-    return;
+  if (numbChar > 140) {
+    $(".error1").text("Character number exceeded").slideDown();
+  
+  } else if (numbChar === 0) {
+    $(".error2").text("Please write a message").slideDown();
+
+  } else {
+    $(".error1").slideUp();
+    $(".error2").slideUp();
+
+    let formData = $(this).serialize();
+
+    $.ajax({
+      url: '/tweets',
+      type: 'POST',
+      data: formData,
+      success: function(response) {
+        console.log('Tweet submitted successfully');
+      },
+      error: function(error) {
+        console.log('Error submitting tweet:', error);
+      }
+    });
+
+    $(this).trigger("reset");
+    $(".counter").text(140);
   }
-
-  if (tweetText.length > 140) {
-    alert('Tweet exceeds the character limit of 140.');
-    return;
-  }
-
-  let formData = $(this).serialize(); // Serialize the form data
-
-  $.ajax({
-    url: '/tweets',
-    type: 'POST',
-    data: formData,
-    success: function(response) {
-      console.log('Tweet submitted successfully');
-     
-    },
-    
-  });
 });
-loadTweets();
+loadTweets(); 
 
 
 });
