@@ -39,7 +39,7 @@ const escape = function (str) {
       fetchTweets();
   
     //new tweets every 3 seconds
-    setInterval(fetchTweets, 3000);
+    // setInterval(fetchTweets, 3000);
   };
 
 
@@ -100,6 +100,8 @@ $('#tweet-form').submit(function(event) {
       data: formData,
       success: function(response) {
         console.log('Tweet submitted successfully');
+        loadTweets();
+
       },
       error: function(error) {
         console.log('Error submitting tweet:', error);
