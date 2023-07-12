@@ -3,31 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// const data =
-// [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1688942866778
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd"
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1689029266778
-//   }
-// ]
 
  $(document).ready(function() {
 
@@ -94,6 +69,20 @@ loadTweets();
 $('#tweet-form').submit(function(event) {
   // Prevent the default behavior of form submission (page refresh)
   event.preventDefault();
+
+  // Get the tweet text from the form
+  const tweetText = $('#tweet-text').val();
+
+  // Check if the tweet is empty or >140
+  if (tweetText.trim() === '') {
+    alert('Please enter a tweet.');
+    return;
+  }
+
+  if (tweetText.length > 140) {
+    alert('Tweet exceeds the character limit of 140.');
+    return;
+  }
 
   let formData = $(this).serialize(); // Serialize the form data
 
