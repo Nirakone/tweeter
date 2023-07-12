@@ -37,3 +37,28 @@
 .new-tweet .counter-overlimit {
   color: red;
 }
+.error1{
+  margin-top:20px;
+  border:5px solid red;
+  background-color: white;
+  color:red;
+  font-size:20px;
+  padding:20px;
+  text-align: center;
+}
+
+/* error empty */
+.error2{
+  margin-top:20px;
+  border:5px solid red;
+  background-color: white;
+  color:red;
+  font-size:20px;
+  padding:20px;
+  text-align: center;
+ }
+
+ /* hide errors when none */
+.hide{
+  display:none;
+}

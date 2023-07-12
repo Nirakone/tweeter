@@ -1,0 +1,65 @@
+
+  /* Styles for desktop and above (1024px and above) */
+  @media (min-width: 1024px) {
+    body {
+      display: flex;
+      flex-direction: row;
+    }
+
+    nav {
+      flex: 0 0 20%;
+    }
+
+    main {
+      flex: 1;
+      padding-top: 400; 
+
+     }
+     .new-tweet {
+      padding-top: 200; /* Reset the top margin */
+    }
+  }
+
+  /* Styles for tablets (between 768px and 1024px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      flex: 0 0 auto;
+
+    }
+    
+    header {
+      flex: 0 0 auto;
+    }
+
+    main {
+      flex: 1;
+    }
+  }
+
+  /* Styles for mobile devices (below 768px) */
+  @media (max-width: 767px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background-color: #F9A03F;
+      background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+      flex: 0 0 auto;
+    }
+    
+    header, section.new-tweet {
+      flex: 0 0 auto;
+
+    }
+    section.tweets-container {
+      word-wrap: break-word;
+
+    }
+  }
