@@ -9,23 +9,27 @@
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const tweetElement = createTweetElement(tweet);
-      $("#tweets-container").append(tweetElement);
+      $("#tweets-container").prepend(tweetElement);
     }
   };
 
   const loadTweets = function() {
-    $.ajax({
-      url: "/tweets",
-      method: "GET"
-    })
+    const fetchTweets = function() {
+      $.ajax({
+        url: "/tweets",
+        method: "GET"
+      })
       .done((data) => {
         renderTweets(data);
       })
       .fail((err) => {
-        
         console.log(err.message);
-      })
-      .always(() => console.log('action has been done'));
+      });
+    };
+      fetchTweets();
+  
+    //new tweets every 2 seconds
+    setInterval(fetchTweets, 2000);
   };
 
 const createTweetElement = function(tweet) {
@@ -59,12 +63,6 @@ const createTweetElement = function(tweet) {
   };
 
 
-// renderTweets();
-loadTweets();
-
-
-
-
 // Event listener for the submit event
 $('#tweet-form').submit(function(event) {
   // Prevent the default behavior of form submission (page refresh)
@@ -86,19 +84,18 @@ $('#tweet-form').submit(function(event) {
 
   let formData = $(this).serialize(); // Serialize the form data
 
-    $.ajax({
-      url: '/tweets',
-      type: 'POST',
-      data: formData,
-      success: function(response) {
-        console.log('Tweet submitted successfully');
-        
-      },
-      error: function(error) {
-        console.log('Error:', error);
-      }
-    });
+  $.ajax({
+    url: '/tweets',
+    type: 'POST',
+    data: formData,
+    success: function(response) {
+      console.log('Tweet submitted successfully');
+     
+    },
+    
   });
+});
+loadTweets();
 
 
 });
