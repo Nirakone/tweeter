@@ -10,6 +10,8 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
+
 }
 nav span {
   font-family: "Bungee", sans-serif;
