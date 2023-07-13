@@ -5,6 +5,7 @@ $(document).ready(function() {
   $("#tweet-text").keyup(function() {
 
     let charactersRemaining = tweetLimit - $(this).val().length;
+    $(".error1").slideUp();
 
     $(".counter").text(charactersRemaining);
 
@@ -12,7 +13,10 @@ $(document).ready(function() {
       $(".counter").addClass("counter-overlimit");
     } else {
       $(".counter").removeClass("counter-overlimit");
+      $(".error2").slideUp();
+
     }
+    
 
   });
 
