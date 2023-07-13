@@ -67,11 +67,11 @@
       flex-direction: column;
     }
 
-    nav {
+    /* nav {
       background-color: #F9A03F;
       background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
       flex: 0 0 auto;
-    }
+    } */
     
     header, section.new-tweet {
       flex: 0 0 auto;
